@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brassmark — pitch deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper:#F2EEE5;
+    --paper-2:#E7E1D2;
+    --ink:#13171F;
+    --brass:#A87E2C;
+    --signal:#B0241F;
+    --graphite:#5C5A55;
+  }
+  *,*::before,*::after { box-sizing:border-box; }
+  html,body { margin:0; padding:0; background:var(--paper); color:var(--ink); font-family:"Inter",system-ui,sans-serif; }
+  body { font-size:15px; line-height:1.55; }
+  .deck { width:100%; min-height:100vh; }
+  .slide {
+    width:100%;
+    min-height:100vh;
+    padding: 56px 80px 56px 80px;
+    border-bottom:1px solid rgba(19,23,31,.15);
+    display:flex; flex-direction:column;
+    justify-content:flex-start;
+    page-break-after: always;
+  }
+  .slide:last-child { border-bottom:0; }
+  .label { font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--graphite); letter-spacing:2.4px; text-transform:uppercase; }
+  .display { font-family:"Source Serif 4","Source Serif Pro",Georgia,serif; font-weight:900; letter-spacing:-0.012em; }
+  .display-italic { font-family:"Source Serif 4","Source Serif Pro",Georgia,serif; font-weight:400; font-style:italic; }
+  .mono { font-family:"JetBrains Mono",monospace; }
+  h1 { font-family:"Source Serif 4",Georgia,serif; font-weight:900; font-size:64px; line-height:1.02; letter-spacing:-0.012em; margin:24px 0 16px 0; }
+  h2 { font-family:"Source Serif 4",Georgia,serif; font-weight:900; font-size:40px; line-height:1.05; letter-spacing:-0.012em; margin:0 0 12px 0; }
+  .num { font-family:"Source Serif 4",Georgia,serif; font-weight:900; font-size:96px; line-height:0.95; color:var(--ink); }
+  .brass-rule { display:inline-block; height:2px; background:var(--brass); width:120px; margin:8px 0 16px 0; }
+  .signal-rule { display:inline-block; height:2px; background:var(--signal); width:120px; margin:8px 0 16px 0; }
+  .meta { color:var(--graphite); font-size:13px; margin-bottom:24px; }
+  .col2 { display:grid; grid-template-columns: 1fr 1fr; gap:64px; align-items:start; }
+  .col-left { padding-right:24px; }
+  table { border-collapse:collapse; width:100%; font-size:14px; }
+  th,td { text-align:left; padding:10px 12px; border-bottom:1px solid rgba(19,23,31,.12); vertical-align:top; }
+  th { font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--graphite); }
+  ul { padding-left:20px; margin:0 0 16px 0; }
+  li { margin-bottom:8px; }
+  .signet { display:inline-block; width:30px; height:30px; border:1.5px solid var(--ink); position:relative; vertical-align:middle; }
+  .signet:before { content:""; position:absolute; left:7px; top:7px; width:14px; height:14px; background:var(--brass); }
+  .header-row { display:flex; align-items:center; gap:16px; }
+  .footer-row { margin-top:auto; padding-top:24px; border-top:1px solid rgba(19,23,31,.15); display:flex; justify-content:space-between; font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--graphite); letter-spacing:2.4px; text-transform:uppercase; }
+  .pricing-card { padding:20px; border:1px solid var(--ink); }
+  .pricing-card.highlight { border-color:var(--brass); border-width:1.5px; }
+  .price-line { font-family:"Source Serif 4",Georgia,serif; font-weight:900; font-size:36px; }
+  .ticker {
+    font-family:"JetBrains Mono",monospace;
+    font-size:13px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:14px 18px;
+    margin-top:18px;
+    line-height:1.7;
+  }
+  .ticker .row { display:flex; gap:16px; align-items:baseline; }
+  .ticker .score { color:var(--brass); font-weight:500; }
+  .ticker .score-high { color:#D89A3D; font-weight:500; }
+  .ticker .due { color:#9aa1ab; }
+  @media print {
+    .slide { min-height: 95vh; padding: 40px 60px; }
+  }
+  @media (max-width: 900px) {
+    .slide { padding: 40px 24px; }
+    h1 { font-size:40px; }
+    h2 { font-size:28px; }
+    .col2 { grid-template-columns: 1fr; gap:24px; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- Slide 1 — Title -->
+  <section class="slide">
+    <div class="header-row">
+      <span class="signet" aria-hidden="true"></span>
+      <span class="label">A Prin7r Edition · Vol. 01 · 2026-05-08</span>
+    </div>
+    <h1 style="margin-top:80px; font-size:96px;">Brassmark.</h1>
+    <span class="brass-rule" style="width:240px; height:2.5px;"></span>
+    <p class="display-italic" style="font-size:30px; line-height:1.3; max-width:640px; margin-top:16px;">
+      The tender desk a senior bidder keeps open in the second monitor.
+    </p>
+    <p class="meta" style="margin-top:48px; max-width:540px;">
+      Real-time alerts on government RFPs matching your NAICS + keyword + region profile.
+      Scored on a 7-signal bid-readiness model. 80 procurement registers, deduped.
+    </p>
+    <div class="footer-row">
+      <span>tender-sniper.prin7r.com</span>
+      <span>10 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 2 — The 90-minute morning -->
+  <section class="slide">
+    <span class="label">Slide 2 — The Problem</span>
+    <h2 style="margin-top:16px;">A capture manager spends 90 minutes a morning eliminating false positives.</h2>
+    <span class="brass-rule"></span>
+    <div class="col2" style="margin-top:24px;">
+      <div class="col-left">
+        <p class="meta">A real morning at an 80-person SDVOSB doing federal IT modernization:</p>
+        <ul>
+          <li><strong>06:30</strong> — opens SAM.gov saved searches.</li>
+          <li><strong>06:35</strong> — clicks through 28 noisy hits.</li>
+          <li><strong>07:00</strong> — pulls a GovWin pipeline view.</li>
+          <li><strong>07:30</strong> — copies the relevant 6 lots into a Slack channel.</li>
+          <li><strong>08:00</strong> — stand-up.</li>
+        </ul>
+        <p style="margin-top:16px;">The job-of-real-value (deciding which 2-3 to pursue) hasn't started yet.</p>
+      </div>
+      <div>
+        <span class="num">90<span style="font-size:32px;"> min</span></span>
+        <p class="meta" style="margin-top:8px;">spent eliminating false positives, not deciding.</p>
+        <p class="meta">Multiplied across an industry of ~6,200 mid-market firms, that is roughly <strong>2.7 million person-hours / year</strong> spent on triage that could be machine-resolved.</p>
+      </div>
+    </div>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>02 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 3 — Why every alternative fails -->
+  <section class="slide">
+    <span class="label">Slide 3 — Competitive landscape</span>
+    <h2 style="margin-top:16px;">Why every alternative fails the morning triage.</h2>
+    <span class="brass-rule"></span>
+    <table style="margin-top:24px;">
+      <thead>
+        <tr><th style="width:30%;">Tool</th><th>Why it fails</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>SAM.gov / TED</strong></td><td>Source-of-record by design; refuses to triage.</td></tr>
+        <tr><td><strong>GovWin</strong></td><td>$20-30k/seat enterprise pricing; pre-RFP-pipeline focus, not morning triage.</td></tr>
+        <tr><td><strong>BloombergGov</strong></td><td>News-and-policy product; lots are an afterthought; lags SAM.gov by 30-90 minutes.</td></tr>
+        <tr><td><strong>BidPrime / GovTribe</strong></td><td>Cheap re-skins of SAM.gov; no scoring, no EU.</td></tr>
+        <tr><td><strong>Build-it-yourself</strong></td><td>Maintenance burden eats the analyst; no NAICS/CPV cross-walk.</td></tr>
+      </tbody>
+    </table>
+    <p class="meta" style="margin-top:24px;">The unmet need is a <strong>tenant-specific bid-readiness score</strong> layered on <strong>broad procurement-register coverage</strong> at <strong>$5-50M-ARR pricing</strong>.</p>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>03 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 4 — The product -->
+  <section class="slide">
+    <span class="label">Slide 4 — The product</span>
+    <h2 style="margin-top:16px;">A tender desk in your second monitor.</h2>
+    <span class="brass-rule"></span>
+    <p class="display" style="font-size:28px; max-width:760px; margin-top:24px;">
+      Watches every public RFP across <strong>80+ procurement registers</strong>.
+      Scores each one against your <strong>NAICS + CPV + region + keyword</strong> profile.
+      Pushes the matches above your threshold to your <strong>inbox + Slack</strong> in real-time.
+    </p>
+
+    <div class="ticker" style="max-width:740px; margin-top:32px;">
+      <div class="row"><span>06:42:18</span><span>SAM.gov</span><span>VA-COTR-25-7</span><span class="score-high">0.91</span><span class="due">due in 19d</span></div>
+      <div class="row"><span>06:42:11</span><span>TX SmartBuy</span><span>DIR-TSO-4392</span><span class="score">0.74</span><span class="due">due in 14d</span></div>
+      <div class="row"><span>06:41:54</span><span>EU TED</span><span>2026/S 086-CPV-72200</span><span class="score">0.68</span><span class="due">due in 28d</span></div>
+      <div class="row"><span>06:41:33</span><span>UK CF</span><span>CCM-RM6263</span><span class="score">0.71</span><span class="due">due in 21d</span></div>
+    </div>
+
+    <p class="mono" style="margin-top:24px; font-size:12px; color:var(--graphite);">
+      FEDERAL POLL: 90 SEC.   STATE: 5 MIN.   INTERNATIONAL: 15 MIN.
+    </p>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>04 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 5 — Score -->
+  <section class="slide">
+    <span class="label">Slide 5 — The bid-readiness score</span>
+    <h2 style="margin-top:16px;">Seven signals. Every score is auditable.</h2>
+    <span class="brass-rule"></span>
+    <table style="margin-top:24px;">
+      <thead><tr><th style="width:8%;">#</th><th>Signal</th><th>Weight</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Days-to-due-date (14-28d sweet spot)</td><td>0.18</td></tr>
+        <tr><td>2</td><td>Set-aside compatibility (SDVOSB / 8(a) / WOSB / HUBZone)</td><td>0.16</td></tr>
+        <tr><td>3</td><td>Past-performance similarity (matching NAICS)</td><td>0.16</td></tr>
+        <tr><td>4</td><td>Contracting officer history (with tenant or similar firms)</td><td>0.14</td></tr>
+        <tr><td>5</td><td>Attachment signal (SOW/PWS parsed vs amendment-only)</td><td>0.12</td></tr>
+        <tr><td>6</td><td>Knock-out terms (FedRAMP / IL5 / ITAR / clearance)</td><td>0.12</td></tr>
+        <tr><td>7</td><td>Dollar-band fit (against tenant min/ceiling)</td><td>0.12</td></tr>
+      </tbody>
+    </table>
+    <p class="meta" style="margin-top:16px;">Rules-based. Auditable. Customers override per-lot; the override refines the model.</p>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>05 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 6 — Audience -->
+  <section class="slide">
+    <span class="label">Slide 6 — Audience</span>
+    <h2 style="margin-top:16px;">Mid-market public-sector practices. Not enterprise. Not freelancers.</h2>
+    <span class="brass-rule"></span>
+    <div class="col2" style="margin-top:24px;">
+      <div class="col-left">
+        <p class="display" style="font-size:18px;"><strong>Primary</strong> — Capture Managers at 80-500-person SDVOSB / 8(a) / WOSB / HUBZone / mid-market federal IT services firms (US).</p>
+        <p class="display" style="font-size:18px; margin-top:16px;"><strong>Secondary</strong> — EU Tender Leads at 100-1,000-person consulting firms (DE / FR / ES / IT / UK).</p>
+      </div>
+      <div>
+        <p class="meta">Anti-personas (we refuse them at the door):</p>
+        <ul>
+          <li>Two-person boutiques.</li>
+          <li>Lobbyists.</li>
+          <li>Construction-only firms.</li>
+          <li>One-FTE veteran shops without a capture function.</li>
+        </ul>
+        <p class="meta" style="margin-top:24px;">
+          <strong>TAM:</strong> ~6,200 firms.<br/>
+          <strong>SAM:</strong> ~3,800 firms.<br/>
+          <strong>SOM (year-1, 90-day-aligned):</strong> ~280 paid logos.
+        </p>
+      </div>
+    </div>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>06 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 7 — Pricing -->
+  <section class="slide">
+    <span class="label">Slide 7 — Pricing</span>
+    <h2 style="margin-top:16px;">$499 / $1,490 / $4,990 — well below GovWin.</h2>
+    <span class="brass-rule"></span>
+    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:24px; margin-top:24px;">
+      <div class="pricing-card">
+        <p class="label">SINGLE-REGION</p>
+        <p class="price-line">$499<span style="font-size:14px; color:var(--graphite);"> / mo</span></p>
+        <ul style="font-size:13px;">
+          <li>1 region, 1 profile, 1 seat.</li>
+          <li>Email + Slack push.</li>
+          <li>Default threshold 0.62.</li>
+        </ul>
+      </div>
+      <div class="pricing-card highlight">
+        <p class="label" style="color:var(--brass);">MOST POPULAR · MULTI-REGION</p>
+        <p class="price-line">$1,490<span style="font-size:14px; color:var(--graphite);"> / mo</span></p>
+        <ul style="font-size:13px;">
+          <li>Up to 3 regions, 3 profiles.</li>
+          <li>3 seats. Email + Slack + custom webhook.</li>
+          <li>Past-performance import (CSV).</li>
+          <li>Default threshold 0.58.</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <p class="label">FEDERAL-PLUS</p>
+        <p class="price-line">$4,990<span style="font-size:14px; color:var(--graphite);"> / mo</span></p>
+        <ul style="font-size:13px;">
+          <li>Federal + 50 states + EU + UK.</li>
+          <li>Unlimited profiles, 10 seats.</li>
+          <li>Contracting-officer graph.</li>
+          <li>White-glove onboarding + QBR.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="meta" style="margin-top:24px;">Paid via NOWPayments hosted invoice (USDT/USDC + card on-ramp). 90-day money-back. <strong>No free trial</strong> — the audience for free trials isn't ours.</p>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>07 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 8 — Distribution -->
+  <section class="slide">
+    <span class="label">Slide 8 — Distribution</span>
+    <h2 style="margin-top:16px;">Where the audience already is.</h2>
+    <span class="brass-rule"></span>
+    <ul style="margin-top:24px; max-width:760px;">
+      <li><strong>NCMA / GovCon Slack communities.</strong> Peer-recommendation rail. Founder is a useful contributor first; product link comes later.</li>
+      <li><strong>Direct outbound</strong> via LinkedIn Sales Navigator, filtered to Capture-Manager titles + ICP NAICS bands. Named-account list (~80 firms) for Federal-Plus.</li>
+      <li><strong>FedScoop / Federal News Network / FCW</strong> earned op-eds. The 11.4% problem.</li>
+      <li><strong>GovEvents / FSP Acquisition Excellence</strong> conferences — booth + targeted dinners.</li>
+      <li><strong>Content-led SEO</strong> on the comparison queries (<em>"SAM.gov saved search false positives"</em>, <em>"GovWin alternative for SDVOSB"</em>, <em>"EU TED filter by CPV"</em>).</li>
+    </ul>
+    <p class="meta" style="margin-top:16px; max-width:760px;"><strong>We do not</strong> use HN, Product Hunt, Twitter ads, or generic "AI for government" trade shows. The audience isn't there.</p>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>08 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 9 — 90-day plan -->
+  <section class="slide">
+    <span class="label">Slide 9 — 90-day plan</span>
+    <h2 style="margin-top:16px;">Three phases, measured by paid logos and MRR.</h2>
+    <span class="brass-rule"></span>
+    <table style="margin-top:24px;">
+      <thead><tr><th>Phase</th><th>Weeks</th><th>Goal</th><th>Target signal</th></tr></thead>
+      <tbody>
+        <tr><td>Soft launch</td><td>1-4</td><td>Audience-seed, first paid Single-region logos, FedScoop op-ed in flight</td><td>3 paid logos, 5 demo calls, op-ed accepted</td></tr>
+        <tr><td>Scale outbound</td><td>5-9</td><td>Sales Navigator at 100/wk, op-ed runs, first conference booth</td><td>8-12 paid logos, $25-40k MRR, 1 named-account verbal</td></tr>
+        <tr><td>Renewals + double-down</td><td>10-13</td><td>First Single renewals, Federal-Plus annual close, channel saturation review</td><td>12-20 paid logos, $40-80k MRR, 1 Federal-Plus annual prepay ($59,880)</td></tr>
+      </tbody>
+    </table>
+    <div class="footer-row">
+      <span>brassmark</span>
+      <span>09 / 10</span>
+    </div>
+  </section>
+
+  <!-- Slide 10 — Ask -->
+  <section class="slide">
+    <span class="label">Slide 10 — The ask</span>
+    <h2 style="margin-top:16px;">Distribution, not capital.</h2>
+    <span class="signal-rule"></span>
+    <p class="display" style="font-size:24px; max-width:740px; margin-top:24px;">
+      Brassmark is built inside Prin7r. Prin7r runs on its own crypto rail. The ask is not for capital.
+    </p>
+    <p class="display" style="font-size:24px; max-width:740px; margin-top:16px;">
+      The ask is <strong>distribution</strong>:
+    </p>
+    <ul style="margin-top:16px; max-width:740px; font-size:17px;">
+      <li>12 introductions to capture managers in our ICP NAICS bands.</li>
+      <li>1 introduction to a CEPS Frankfurt working-group convener.</li>
+      <li>1 placement opportunity at FedScoop / FCW / Federal News Network.</li>
+    </ul>
+    <p class="meta" style="margin-top:32px;">
+      If you can help with any of these, the founder is at <span class="mono">desk@prin7r.com</span>.
+    </p>
+    <div style="margin-top:auto;">
+      <span class="signet" aria-hidden="true"></span>
+      <span class="display" style="font-size:36px; margin-left:14px; font-weight:900; vertical-align:middle;">Brassmark</span>
+      <span class="brass-rule" style="display:block; width:100px; margin-top:6px;"></span>
+      <span class="mono" style="font-size:10px; color:var(--graphite); letter-spacing:2.4px;">TENDER DESK · A PRIN7R EDITION · 2026</span>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# next.js build output (per-app .gitignore handles this; keep it here too)
+.next/
+out/
+.next-cache/
+
+# build / dist
+build/
+dist/
+
+# misc
+.DS_Store
+*.tsbuildinfo
+
+# local env — keys live in /opt/prin7r-deploys/tender-sniper/.env on the deploy host,
+# never committed
+.env
+.env*.local
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# screenshot scratch dir
+.playwright-cache/
