@@ -5,18 +5,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#F2EEE5",
-        "paper-2": "#E7E1D2",
-        ink: "#13171F",
-        brass: "#A87E2C",
-        "brass-2": "#8A6622",
-        signal: "#B0241F",
-        graphite: "#5C5A55",
+        canvas: "#0E1116",
+        "canvas-2": "#14181F",
+        "canvas-3": "#1B2029",
+        ink: "#F4F2EC",
+        brass: "#C99540",
+        "brass-2": "#B5832F",
+        signal: "#D8443E",
+        graphite: "#8B8A85",
       },
       fontFamily: {
         display: ["'Source Serif 4'", "'Source Serif Pro'", "Georgia", "serif"],
-        body: ["'Inter'", "system-ui", "sans-serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "monospace"],
+        body: ["'Geist'", "'Söhne'", "system-ui", "sans-serif"],
+        sans: ["'Geist'", "'Söhne'", "system-ui", "sans-serif"],
+        mono: ["'Geist Mono'", "'JetBrains Mono'", "ui-monospace", "monospace"],
       },
       maxWidth: {
         prose: "1180px",

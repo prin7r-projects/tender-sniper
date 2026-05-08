@@ -13,6 +13,8 @@ The visual identity is sourced from [`docs/01-brand-identity.md`](docs/01-brand-
 
 The Wave 2 deliverable in this repo is the **marketing landing + a NOWPayments-wired pricing page**. The full ingestion / scoring / notification pipeline is designed in `docs/02-architecture.md` and lives in `apps/app/` as a deferred wasp-lang/open-saas fork (Wave 3+).
 
+**Visual posture (Wave 2 redesign, 2026-05-08).** The landing now ships on a confident dark canvas — `#0E1116` lampblack with a warm paper-tone ink (`#F4F2EC`). The brief's intent — "the tender desk a senior bidder keeps open on the second monitor" — is a Bloomberg Terminal-adjacent dark-mode reading surface; the prior `#F2EEE5` paper canvas read closer to a stationary brand. The redesign commits to dark, keeps the brass accent rules and signal-red priority pill, and replaces Inter with **Geist** (premium grotesk). See §4 (color tokens), §5 (typography), §15 (changelog).
+
 **Audience** —
 - **Marsha, the Capture Manager** — 38, ex-DefBDM, runs capture for an 80-person SDVOSB doing federal IT modernization. Wakes up to 1,800 SAM.gov hits a week, ~12 of which are real. Reports to the COO.
 - **Dieter, the EU Tender Lead** — 31, runs the public-sector pipeline at a 600-person consulting firm in Frankfurt. Watches TED, Boamp, AMEDA, PLACE, PCS-Public, Doffin, Bund, vergabe.bayern, e-prior, plus UK Contracts Finder & FTS daily.
@@ -41,37 +43,46 @@ A procurement terminal. Not a dashboard. Not a SaaS hero with optimistic gradien
 
 ## 4. Color tokens
 
-Single source of truth: `apps/landing/tailwind.config.ts` and `apps/landing/app/globals.css`. Six-color institutional palette, intentionally not a SaaS dashboard palette.
+Single source of truth: `apps/landing/tailwind.config.ts` and `apps/landing/app/globals.css`. Eight-color dark-canvas palette (Wave 2 redesign 2026-05-08), intentionally not a SaaS dashboard palette.
 
 | Role | Token | Hex | CSS var | Used for |
 |------|-------|-----|---------|----------|
-| Surface (default) | `paper` | `#F2EEE5` | `--paper` | Page background, card surfaces |
-| Surface (dimmed) | `paper-2` | `#E7E1D2` | `--paper-2` | Section bands (Coverage, Pricing) |
-| Ink | `ink` | `#13171F` | `--ink` | Body copy, masthead, primary buttons, ticker background |
-| Brass | `brass` | `#A87E2C` | `--brass` | Accent rules, monogram, tier-priced borders, score arcs, hero highlight ("second monitor"), btn hover |
-| Brass-2 | `brass-2` | `#8A6622` | `--brass-2` | Reserved (darker brass for hover states on brass surfaces; not currently used in steady state) |
-| Signal-red | `signal` | `#B0241F` | `--signal` | Priority pill (`priority ≥ 0.85`), error states |
-| Graphite | `graphite` | `#5C5A55` | `--graphite` | Captions, mono labels, secondary metadata |
+| Canvas (page) | `canvas` | `#0E1116` | `--canvas` | Page background, button text on brass hover |
+| Canvas-2 (band) | `canvas-2` | `#14181F` | `--canvas-2` | Section bands (Coverage, Pricing) at 60% opacity overlay |
+| Canvas-3 (surface) | `canvas-3` | `#1B2029` | `--canvas-3` | Cards (RFP, ticker, tier, worked-example aside), elevated surfaces |
+| Ink | `ink` | `#F4F2EC` | `--ink` | Body copy, masthead, primary buttons, headlines |
+| Ink-2 (muted) | — | `rgba(244,242,236,.78)` | `--ink-2` | Secondary body, deck text, list items |
+| Ink-3 (faint) | — | `rgba(244,242,236,.55)` | `--ink-3` | Captions, mono metadata, footer micro-copy |
+| Ink-rule | — | `rgba(244,242,236,.10)` | `--ink-rule` | Section dividers, faq rows, signal-bar rows |
+| Ink-rule-2 | — | `rgba(244,242,236,.16)` | `--ink-rule-2` | Card borders, ghost-button border, tier-card border |
+| Brass | `brass` | `#C99540` | `--brass` | Accent rules, monogram inset, tier-highlight border, "second monitor" highlight, btn hover, score-pulse |
+| Brass-2 | `brass-2` | `#B5832F` | `--brass-2` | Hover states on brass surfaces (reserved) |
+| Signal-red | `signal` | `#D8443E` | `--signal` | Priority pill (`priority ≥ 0.85`), error states |
+| Graphite | `graphite` | `#8B8A85` | `--graphite` | Reserved fallback for captions where `--ink-3` doesn't apply |
 
-**Contrast.** Verified WCAG AA: ink-on-paper 14.6:1, graphite-on-paper 4.7:1, signal-on-paper 5.9:1, brass-on-paper 4.6:1 (large display only — body text in brass is forbidden), paper-on-ink 14.6:1.
+**Why brass and signal lifted.** The Wave 1 brass `#A87E2C` and signal `#B0241F` were calibrated for a paper canvas. On the new lampblack canvas they read muddy; we've lifted brass to `#C99540` and signal to `#D8443E` so both retain the same recognisable hue while passing AA against the `--canvas` background.
 
-**Forbidden combinations.** Brass on signal (war-paint), brass on graphite (illegible), small (<14px) brass body copy, signal on brass.
+**Contrast.** Verified WCAG AA on the dark canvas: ink-on-canvas 16.1:1, ink-2-on-canvas 12.6:1, ink-3-on-canvas 8.9:1, brass-on-canvas 7.2:1, signal-on-canvas 5.4:1. Canvas-on-brass (button-hover label) 7.2:1.
+
+**Forbidden combinations.** Brass on signal (war-paint), brass body copy under 14px, signal on brass, ink-3 used for primary copy, any pure white `#FFFFFF` (always use `--ink` warm tone).
 
 ## 5. Typography
 
-Three families. No fourth font.
+Three families. Inter is **banned** (Wave 2 redesign 2026-05-08); the body grotesk is **Geist**, the mono is **Geist Mono**, the editorial display stays Source Serif 4.
 
 | Role | Family | Weights | Used at | Reason |
 |------|--------|---------|---------|--------|
-| Display | **Source Serif 4** | 400, 600, 900 + italic 400 | Hero 44-76px, sections 34-44px, tier prices 44px, FAQ questions 19px | Strong institutional serif. Pairs cleanly with Inter. (Brand reference is GT Sectra, but Source Serif 4 is the redistributable Google Fonts equivalent.) |
-| Body | **Inter** | 400, 500, 600 | Body 14-17px, UI 14px, tier copy 13.5-14px | Neutral, high-legibility sans; cleanly pairs with Source Serif. |
-| Mono | **JetBrains Mono** | 400, 500 | Alert ticker 12.5px, labels 10px caps, signal-bar names 10-11.5px, NAICS / CPV codes, footer copyright | The alert feed *is* monospace. Reads as machine output, exactly as it should — this is a procurement terminal. |
+| Display | **Source Serif 4** | 400, 500, 600, 800 + italic 400 | Hero 44-74px, sections 34-44px, tier prices 46px, FAQ questions 19px, worked-example body 18-20px | Strong institutional serif at editorial sizes. Brand reference is GT Sectra; Source Serif 4 is the redistributable Google Fonts equivalent. |
+| Sans | **Geist** | 300, 400, 500, 600, 700 | Body 14-18.5px, UI 14px, button labels, tier copy 13.5-14px, masthead nav | Premium grotesk with character — Vercel's typeface. Replaces Inter; keeps the technical-precision feel without Inter's now-default-AI flatness. Opentype features `ss01` + `cv11` enabled body-wide for terminal-style numerals and a sharper lowercase `g`. |
+| Mono | **Geist Mono** | 400, 500 | Alert ticker 12.5px, labels 10.5px caps, signal-bar names 10-11.5px, NAICS / CPV / agency-IDs / dates | The alert feed *is* monospace — reads as machine output. Geist Mono is one of three fonts (with JetBrains Mono and Berkeley Mono) currently competing for the senior-engineer mono slot; we picked Geist Mono so the body and mono share a designer (legibility at terminal sizes is uniform). JetBrains Mono is the fallback in the stack. |
 
-Loaded from Google Fonts via `@import` in `globals.css` with `display=swap`. Pairing rationale: serif display + neutral sans body is the editorial-institutional pairing (FT, The Economist). The mono alert feed is the brand signature — it cannot be substituted.
+Loaded from Google Fonts via `@import` in `globals.css` with `display=swap`. Pairing rationale unchanged: editorial serif display + technical grotesk body + machine-output mono. The mono alert feed is the brand signature — it cannot be substituted.
 
-**Type scale (display).** 17 / 22 / 28 / 34 / 40 / 44 / 56 / 64 / 76 px.
-**Body scale.** 11 / 12 / 13 / 14 / 15 / 17 / 19 / 22 px.
-**Letter-spacing.** Display tightens by `-0.012em`; mono labels open to `2.4px` for caps.
+**Type scale (display).** 17 / 18 / 19 / 20 / 22 / 28 / 34 / 40 / 44 / 64 / 74 px.
+**Sans/body scale.** 10 / 10.5 / 11 / 11.5 / 12 / 12.5 / 13 / 13.5 / 14 / 14.5 / 15 / 16 / 17 / 18 / 18.5 px.
+**Letter-spacing.** Display tightens to `-0.018em` to `-0.022em` (Geist runs slightly looser than Inter so headlines need more negative tracking). Mono labels open to `0.18em` (≈2.6-2.9px at 10.5px) for uppercase caps. Sans body sets at `-0.005em` to neutralise Geist's default openness.
+**Tabular numerics.** All numbers in dollar amounts, scores, due-date counts, NAICS codes, and time stamps use `font-variant-numeric: tabular-nums` (utility class `.tabular`).
+**Wrapping.** Headlines and section subtitles set `text-wrap: balance` / `text-wrap: pretty` to prevent orphans.
 
 ## 6. Spacing, radius, shadows, and borders
 
@@ -212,4 +223,5 @@ Capture script: `scripts/capture-landing-screenshots.mjs` (Playwright Chromium, 
 
 | Date | Change | Reviewer |
 |------|--------|----------|
+| 2026-05-08 | **Wave 2 redesign — confident dark canvas.** Replaced paper `#F2EEE5` canvas with lampblack `#0E1116` (Bloomberg-Terminal-adjacent reading surface). Replaced Inter with **Geist** (premium grotesk); replaced JetBrains Mono with **Geist Mono** (kept JetBrains Mono in fallback). Lifted brass `#A87E2C → #C99540` and signal `#B0241F → #D8443E` for AA contrast on dark canvas. Refined alert ticker: brass top accent rule, larger row tracking, sample-feed footer rule. Refined sample RFP card: realistic federal contract id (`36C10B26R0117`), specific dollar band (`$2.4M – $24.7M`), full CO name (Reginald F. Mendez). Restructured Coverage as a 3-pane bento taxonomy (US Federal · US State 50-cell grid · International 15-source list), each pane with a header counter (`50 sources` in brass) and a `border-right` divider. Tightened headline tracking to `-0.022em`, applied `text-wrap: balance` and tabular numerics throughout. Removed all paper-grain background; replaced with two near-invisible radial vignettes (brass top, signal bottom-right) at 4% / 2.5% opacity. All sections re-padded to `py-24 md:py-28` for macro-whitespace. DESIGN.md §1, §4, §5, §15 updated. Build passes (`pnpm build` 5.8 kB / 111 kB First Load JS). Screenshots recaptured from live deploy. | Wave 2 redesign agent |
 | 2026-05-08 | Wave 2 batch 2 build — initial Brassmark identity, `apps/landing/` scaffolded, NOWPayments integration wired (POST `/api/checkout/nowpayments` + IPN webhook with HMAC-SHA512 verification), live alert ticker + sample RFP card + 7-signal score explainer + 3-tier pricing + 8-question FAQ + footer. DESIGN.md authored with all 15 sections. Screenshots captured from the production URL. | Wave 2 batch agent |
