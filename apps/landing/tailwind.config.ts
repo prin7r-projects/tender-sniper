@@ -8,6 +8,7 @@ const config: Config = {
         canvas: "#0E1116",
         "canvas-2": "#14181F",
         "canvas-3": "#1B2029",
+        "canvas-4": "#23282F",
         ink: "#F4F2EC",
         brass: "#C99540",
         "brass-2": "#B5832F",

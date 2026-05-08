@@ -11,19 +11,23 @@
 @tailwind utilities;
 
 :root {
-  /* Dark canvas palette — replaces Wave 1 paper #F2EEE5 */
-  --canvas: #0E1116;          /* lampblack — page background */
-  --canvas-2: #14181F;        /* dimmed band — Coverage / Pricing */
-  --canvas-3: #1B2029;        /* card / surface */
-  --ink: #F4F2EC;             /* warm paper-tone ink (text on dark) */
+  /* [BRASSMARK_GLOBALS_V2] Dark canvas palette — Wave 2 redesign 2026-05-08.
+   * Aligned to Linear's Midnight Command Center surface ramp (3-tier elevation
+   * canvas → canvas-2 → canvas-3) with Brassmark's brass accent in place of
+   * Linear's neon-lime so the brand identity remains distinct from the ref. */
+  --canvas: #0E1116;          /* lampblack — page background (Linear's pitch-black analog) */
+  --canvas-2: #14181F;        /* graphite-equivalent band — Coverage / Pricing dimmed band */
+  --canvas-3: #1B2029;        /* deep-slate-equivalent — card / surface (RFP, ticker, tier) */
+  --canvas-4: #23282F;        /* charcoal-grey-equivalent — borders & elevated overlays */
+  --ink: #F4F2EC;             /* porcelain-equivalent warm paper-tone ink */
   --ink-2: rgba(244, 242, 236, 0.78);
   --ink-3: rgba(244, 242, 236, 0.55);
   --ink-rule: rgba(244, 242, 236, 0.10);
   --ink-rule-2: rgba(244, 242, 236, 0.16);
 
-  --brass: #C99540;           /* slightly lifted from #A87E2C for dark-mode contrast */
+  --brass: #C99540;           /* primary accent (Brassmark identity — replaces Linear's neon-lime) */
   --brass-2: #B5832F;         /* hover */
-  --signal: #D8443E;          /* signal-red lifted for dark-mode contrast */
+  --signal: #D8443E;          /* signal-red — priority pill / urgent only */
   --graphite: #8B8A85;        /* mono labels / metadata */
 
   /* Score-bar gradient stops — used in ticker */
